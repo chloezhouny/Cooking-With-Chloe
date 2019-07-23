@@ -1,15 +1,36 @@
-<h1>Recipes</h1>
+
+<div>
+<h1>Recipes</h1> 
+<button id="scrape" class="btn">Get Recipes</button>
+</div>
 
 
-<ul>
+<div class="uk-child-width-1-4@m" uk-grid id = "cardContainer">
   {{#each recipes}}
-  <li>
-    {{title}}
-    {{link}}
-    {{content}}
-    <button class="change-save" data-id="{{_id}}" data-saved="{{saved}}">Save Recipe
-    </button>
-  </li>
-  {{/each}}
-</ul>
 
+	  {{#unless this.saved}}
+
+	  	<div>
+	        <div class="uk-card uk-card-default">
+	            <div class="uk-card-media-top">
+	                <img src= {{image}} alt="">
+	            </div>
+	            <div class="uk-card-body">
+	                <h3 class="uk-card-title">{{title}}</h3>
+	                <p>{{content}}</p>
+	                <p>{{link}}</p>
+	                 <button class="change-save" data-id="{{_id}}" data-saved="{{saved}}">Save Recipe
+			    	</button>
+	            </div>
+	        </div>
+    	</div>
+	  {{/unless}}
+  {{/each}}
+</div>
+
+
+
+<script>
+	
+</script>
+  
