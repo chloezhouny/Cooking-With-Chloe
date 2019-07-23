@@ -28,7 +28,16 @@ app.use(express.static("public"));
 
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+//Mongo remote/local initialization
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true }).then(() => console.log("Connected to db")).catch((err) => console.log(err));
+
+// mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 
 // Routes
@@ -48,11 +57,12 @@ app.get("/scrape", function(req, res) {
       result.title = $(this)
         .children().children("h2")
         .text();
-      result.link = $(this)
+      result.link = "https://www.gordonramsay.com" + $(this)
         .children("a")
         .attr("href");
       result.content = $(this).children().children("p").text();
-
+      result.saved = false;
+      console.log(result);
 
       // Create a new recipe using the `result` object built from scraping
       db.Recipe.create(result)
@@ -72,16 +82,40 @@ app.get("/scrape", function(req, res) {
 });
 
 
+
+
+
 app.get("/recipes", function(req, res) {
   // Grab every document in the Recipes collection
   db.Recipe.find({})
+
     .then(function(dbRecipe) {
-      res.json(dbRecipe);
+
+     var hbsObject = {
+      recipes: dbRecipe
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
     })
     .catch(function(err) {
       res.json(err);
     });
 });
+
+
+
+app.put("/recipes/:id", function(req,res){
+  db.Recipe.findOneAndUpdate({ _id: req.params.id }, req.body)
+  .then(function(response){
+    res.json(true)
+    console.log(response);
+  })
+  .catch(function(err){
+    console.log(err);
+  })
+})
+
+
 
 
 app.get("/recipes/:id", function(req, res) {
@@ -114,6 +148,5 @@ app.post("/recipes/:id", function(req, res) {
 
 
 
-app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
-});
+
+

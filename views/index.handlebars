@@ -1,0 +1,15 @@
+<h1>Recipes</h1>
+
+
+<ul>
+  {{#each recipes}}
+  <li>
+    {{title}}
+    {{link}}
+    {{content}}
+    <button class="change-save" data-id="{{_id}}" data-saved="{{saved}}">Save Recipe
+    </button>
+  </li>
+  {{/each}}
+</ul>
+

@@ -1,0 +1,11 @@
+<h1>Recipes</h1>
+
+
+<ul>
+  {{#each recipes}}
+    {{#if saved}}
+      {{> recipe-block saved=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
