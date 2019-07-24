@@ -148,7 +148,7 @@ app.post("/recipes/:id", function(req, res) {
       return db.Recipe.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
     })
     .then(function(dbRecipe) {
-      console.log(dbRecipe)
+      console.log(dbRecipe);
       res.json(dbRecipe);
     })
     .catch(function(err) {
