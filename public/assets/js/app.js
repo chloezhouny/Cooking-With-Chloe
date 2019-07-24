@@ -81,12 +81,34 @@
 
            $("#title").val("");
            $("#body").val("");
-           // $("#modal-sections").load("http://localhost:8080/saved" + " #modal-sections");
-           // UIkit.modal("#modal-sections").hide();
-           // UIkit.modal("#modal-sections").show();
            window.location.reload();
        })
     })
+
+
+    $(document).on("click", ".deleteNote", function(e){
+
+            e.preventDefault();
+
+            var recipeID = $(this).data("id");
+           
+            var note = {
+                title: "",
+                body: ""
+            }
+
+           $.post("/recipes/"+recipeID, note, function(response){
+               console.log(response);
+                $("#title").val("");
+                $("#body").val("");
+
+               // $("#modal-sections").load("http://localhost:8080/saved" + " #modal-sections");
+               // UIkit.modal("#modal-sections").hide();
+               // UIkit.modal("#modal-sections").show();
+               window.location.reload();
+           })
+        })
+
 
 
 
