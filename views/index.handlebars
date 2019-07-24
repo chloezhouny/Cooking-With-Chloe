@@ -1,8 +1,10 @@
 
 <div>
 <h1>Recipes</h1> 
-<button id="scrape" class="btn">Get Recipes</button>
-<button id="saved" href= "/saved" class="btn">Show Saved Recipes</button>
+<!-- <button id="scrape" class="btn">Get Recipes</button> -->
+<a class="uk-button uk-button-default" href="/scrape" uk-toggle id="scrape">Get Recipes</a>
+<a class="uk-button uk-button-default" href="/saved" uk-toggle>Show Saved Recipes</a>
+<!-- <button id="saved" href= "/saved" class="btn">Show Saved Recipes</button> -->
 </div>
 
 
@@ -17,11 +19,11 @@
 	                <img src= {{image}} alt="">
 	            </div>
 	            <div class="uk-card-body">
-	                <h3 class="uk-card-title">{{title}}</h3>
+	                <a href = "{{link}}"><h3 class="uk-card-title">{{title}}</h3></a>
 	                <p>{{content}}</p>
-	                <p>{{link}}</p>
-	                 <button class="change-save" data-id="{{_id}}" data-saved="{{saved}}">Save Recipe
-			    	</button>
+	  <!--                <button class="change-save" data-id="{{_id}}" data-saved="{{saved}}">Save Recipe
+			    	</button> -->
+			    	 <button class="uk-button uk-button-secondary change-save" data-saved="{{saved}}" data-id = "{{_id}}" type="button">Save Recipe</button>
 	            </div>
 	        </div>
     	</div>

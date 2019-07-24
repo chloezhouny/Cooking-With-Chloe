@@ -14,7 +14,8 @@
 
 <div>
 <h1>Saved Recipes</h1> 
-<button id="home" href= "/" class="btn">Go Home</button>
+<!-- <button id="home" href= "/" class="btn">Go Home</button> -->
+<a class="uk-button uk-button-default" href="/" uk-toggle>Go Home</a>
 </div>
 
 
@@ -26,10 +27,11 @@
 	                <img src= {{image}} alt="">
 	            </div>
 	            <div class="uk-card-body">
-	                <h3 class="uk-card-title">{{title}}</h3>
+	                <a href = "{{link}}"><h3 class="uk-card-title">{{title}}</h3></a>
 	                <p>{{content}}</p>
-	                <p>{{link}}</p>
-	                 <button class="delete-save" data-id="{{_id}}" data-saved="{{saved}}">Delete Recipe
+
+
+	                 <button class="delete-save uk-button uk-button-secondary" data-id="{{_id}}" data-saved="{{saved}}" type="button">Delete Recipe
 			    	</button>
 
 			    	<a class="uk-button uk-button-default notes " href="#modal-sections" uk-toggle>Recipe Notes</a>
@@ -45,14 +47,14 @@
 					             <input class="uk-input" id="title"  type="text" placeholder="title">
 					            <input class="uk-input" id="body"  type="text" placeholder="body">
 					            <br>
-					            <button class="uk-button uk-button-secondary updateNote" data-id = "{{_id}}" type="button">Update Note</button>
-					             <button class="uk-button uk-button-secondary deleteNote" data-id = "{{_id}}" type="button">Delete Note</button>
-
+					          
 
 					        </div>
 
 					        <div class="uk-modal-footer uk-text-right">
-					          
+					            <button class="uk-button uk-button-secondary updateNote" data-id = "{{_id}}" type="button">Update Note</button>
+					             <button class="uk-button uk-button-secondary deleteNote" data-id = "{{_id}}" type="button">Delete Note</button>
+
 
 					             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
 
