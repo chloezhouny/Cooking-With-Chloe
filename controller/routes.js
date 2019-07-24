@@ -60,7 +60,6 @@ app.get("/scrape", function(req, res) {
    res.send("Scrape Complete");
 });
 
-
 });
 
 
@@ -85,18 +84,32 @@ app.get("/recipes", function(req, res) {
 
  app.get('/test', function(req, res){
  	console.log("removing");
- 	db.Recipe.remove({});
-
- 	db.Recipe.find({}).then(function(dbRecipe)
+ 	db.Note.remove({}).then( (dbRecipe) =>
  	{
  		res.json(dbRecipe);
  	});
+});
 
+app.get("/saved", function(req, res) {
+  // Grab every document in the saved recipes collection
+  db.Recipe.find({saved: true})
+  .populate("note")
+    .then(function(dbRecipe) {
+
+     var hbsObject = {
+      recipes: dbRecipe
+    };
+    console.log(hbsObject);
+    res.render("saved", hbsObject);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 });
 
 
 
-
+//Update saved
 app.put("/recipes/:id", function(req,res){
   db.Recipe.findOneAndUpdate({ _id: req.params.id }, req.body)
   .then(function(response){
@@ -110,7 +123,7 @@ app.put("/recipes/:id", function(req,res){
 
 
 
-
+//Get new note
 app.get("/recipes/:id", function(req, res) {
   db.Recipe.findOne({ _id: req.params.id })
     .populate("note")
@@ -122,6 +135,9 @@ app.get("/recipes/:id", function(req, res) {
     });
 });
 
+
+
+//Create new note
 app.post("/recipes/:id", function(req, res) {
 
   db.Note.create(req.body)
@@ -132,6 +148,7 @@ app.post("/recipes/:id", function(req, res) {
       return db.Recipe.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
     })
     .then(function(dbRecipe) {
+      console.log(dbRecipe)
       res.json(dbRecipe);
     })
     .catch(function(err) {

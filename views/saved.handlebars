@@ -1,5 +1,5 @@
-<h1>Recipes</h1>
 
+<!-- 
 
 <ul>
   {{#each recipes}}
@@ -9,3 +9,65 @@
   {{/each}}
 </ul>
 
+ -->
+
+
+<div>
+<h1>Saved Recipes</h1> 
+<button id="home" href= "/" class="btn">Go Home</button>
+</div>
+
+
+<div class="uk-child-width-1-4@m" uk-grid id = "cardContainer">
+  {{#each recipes}}
+	  	<div>
+	        <div class="uk-card uk-card-default">
+	            <div class="uk-card-media-top">
+	                <img src= {{image}} alt="">
+	            </div>
+	            <div class="uk-card-body">
+	                <h3 class="uk-card-title">{{title}}</h3>
+	                <p>{{content}}</p>
+	                <p>{{link}}</p>
+	                 <button class="delete-save" data-id="{{_id}}" data-saved="{{saved}}">Delete Recipe
+			    	</button>
+
+			    	<a class="uk-button uk-button-default notes " href="#modal-sections" uk-toggle>Recipe Notes</a>
+
+			    	<div id="modal-sections" uk-modal>
+					    <div class="uk-modal-dialog">
+					        <button class="uk-modal-close-default" type="button" uk-close></button>
+					        <div class="uk-modal-header">
+					            <h2 class="uk-modal-title">{{note.title}}</h2>
+					        </div>
+					        <div class="uk-modal-body">
+					            <p>{{note.body}}</p>
+					             <input class="uk-input" id="title"  type="text" placeholder="title">
+					            <input class="uk-input" id="body"  type="text" placeholder="body">
+					            <br>
+					            <button class="uk-button uk-button-secondary updateNote" data-id = "{{_id}}" type="button">Update Note</button>
+					             <button class="uk-button uk-button-secondary deleteNote" data-id = "{{_id}}" type="button">Delete Note</button>
+
+
+					        </div>
+
+					        <div class="uk-modal-footer uk-text-right">
+					          
+
+					             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+
+					        </div>
+					    </div>
+					</div>
+
+	            </div>
+	        </div>
+    	</div>
+  {{/each}}
+</div>
+
+
+<script>
+	
+</script>
+  

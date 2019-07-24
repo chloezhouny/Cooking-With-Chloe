@@ -1,13 +1,15 @@
   
 
-  $("#scrape").on("click", function(){
+  $(document).on("click", "#scrape", function(){
         $.get("/scrape", function(response){
             window.location.reload();
         }); 
     });
-  
 
-    $(".change-save").on("click", function(){
+
+
+
+    $(document).on("click", ".change-save", function(){
         var recipeid = $(this).data("id");
 
 
@@ -16,11 +18,12 @@
         }
 
         var temp = $(this); 
+        console.log(temp);
 
         $.ajax({
             url: '/recipes/'+recipeid, 
             type: 'PUT', 
-            data: savedRecipe
+            data: savedRecipe,
             success: function(result){
                 if (result) {
                 temp.parent(".uk-card-body").parent().remove();
@@ -29,3 +32,64 @@
         }) 
 
      });
+
+
+    $(document).on("click", "#saved", function(){
+        $.get("/scrape", function(response){
+            window.location.reload();
+        }); 
+    });
+
+     $(document).on("click", ".delete-save", function(){
+        var recipeid = $(this).data("id");
+
+
+        var savedRecipe = {
+            saved: false
+        }
+
+        var temp = $(this); 
+        console.log(temp);
+
+        $.ajax({
+            url: '/recipes/'+recipeid, 
+            type: 'PUT', 
+            data: savedRecipe,
+            success: function(result){
+                if (result) {
+                temp.parent(".uk-card-body").parent().remove();
+                }
+            }
+        }) 
+
+     });
+
+
+
+     $(document).on("click", ".updateNote", function(e){
+
+        e.preventDefault();
+
+        var recipeID = $(this).data("id");
+       
+        var note = {
+            title: $("#title").val().trim(),
+            body: $("#body").val().trim()
+        }
+       $.post("/recipes/"+recipeID, note, function(response){
+           console.log(response);
+           $("#title").val("");
+           $("#body").val("");
+       })
+    })
+
+
+
+
+
+
+
+
+
+
+
