@@ -90,23 +90,26 @@
 
             e.preventDefault();
 
-            var recipeID = $(this).data("id");
+            var recipeID = $(this).attr("recipeId");
+            var noteID = $(this).attr("noteId");
+            console.log(noteID["title"]);
+            console.log(recipeID);
            
             var note = {
                 title: "",
                 body: ""
             }
 
-           $.post("/recipes/"+recipeID, note, function(response){
-               console.log(response);
-                $("#title").val("");
-                $("#body").val("");
+           // $.post("/recipes/"+recipeID, note, function(response){
+           //     console.log(response);
+           //      $("#title").val("");
+           //      $("#body").val("");
 
-               // $("#modal-sections").load("http://localhost:8080/saved" + " #modal-sections");
-               // UIkit.modal("#modal-sections").hide();
-               // UIkit.modal("#modal-sections").show();
-               window.location.reload();
-           })
+           //     // $("#modal-sections").load("http://localhost:8080/saved" + " #modal-sections");
+           //     // UIkit.modal("#modal-sections").hide();
+           //     // UIkit.modal("#modal-sections").show();
+           //     window.location.reload();
+           // })
         })
 
 

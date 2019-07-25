@@ -1,11 +1,47 @@
 
-<div>
-<h1>Saved Recipes</h1> 
-<a class="uk-button uk-button-default" href="/" uk-toggle>Go Home</a>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" >
+
+
+	<nav class="uk-navbar-container uk-margin" uk-navbar id = "navbar">
+	    <div class="uk-navbar-left">
+
+	        <a class="uk-navbar-item uk-logo" href="/"><h2>COOKING WITH CHLOE</h2></a>
+
+	    </div>
+
+	    <div class = "uk-navbar-right">
+
+	        <ul class="uk-navbar-nav">
+	            <li class="uk-active">
+	            	<a class="uk-button uk-button-default recipes" href="/" uk-toggle id="scrape">RECIPES <img class = "arrow" src = "assets/css/arrow.png"/></a>
+	           <!--      <a href="/scrape" id="scrape" class = "recipes uk-button uk-button-defualt">Recipes <img class = "arrow" src = "assets/css/arrow.png"/></a> -->
+	                <div class="uk-navbar-dropdown" duration="0.1">
+	                    <ul class="uk-nav uk-navbar-dropdown-nav">
+	                        <li class="uk-active"><a href="#">ULTIMITATE FIT FOOD </a></li>
+	                    </ul>
+	                </div>
+	            </li>
+	            <li class="uk-active">
+	                <a href="/saved" class = "recipes">MY FAVORITES<img class = "arrow" src = "assets/css/arrow.png"/></a>
+	                <div class="uk-navbar-dropdown" duration="0.1">
+	                    <ul class="uk-nav uk-navbar-dropdown-nav">
+	                        <li class="uk-active"><a href="#">ULTIMITATE FIT FOOD </a></li>
+	                    </ul>
+	                </div>
+	            </li>
+        	</ul>
+	    </div>
+	</nav>
 </div>
 
 
-<div class="uk-child-width-1-4@m" uk-grid id = "cardContainer">
+<div class = "uk-conatiner">
+	<h1 class = "uk-flex uk-flex-center uk-margin-large-top uk-margin-large-bottom">MY FAVORITES</h1> 
+
+
+
+<div class = "uk-flex uk-flex-center uk-conatiner" id="recipesContainer">
+<div class="uk-child-width-1-3@m uk-conatiner" uk-grid id = "cardContainer">
   {{#each recipes}}
 	  	<div>
 	        <div class="uk-card uk-card-default">
@@ -17,10 +53,10 @@
 	                <p>{{content}}</p>
 
 
-	                 <button class="delete-save uk-button uk-button-secondary" data-id="{{_id}}" data-saved="{{saved}}" type="button">Delete Recipe
+	                 <button class="delete-save uk-button uk-button-secondary" data-id="{{_id}}" data-saved="{{saved}}" type="button">Unsave Me
 			    	</button>
 
-			    	<a class="uk-button uk-button-default notes " href="#modal-sections" uk-toggle>Recipe Notes</a>
+			    	<a class="uk-button uk-button-default notes " href="#modal-sections" uk-toggle>Take Note</a>
 
 			    	<div id="modal-sections" uk-modal>
 					    <div class="uk-modal-dialog">
@@ -30,20 +66,17 @@
 					        </div>
 					        <div class="uk-modal-body">
 					            <p>{{note.body}}</p>
-					             <input class="uk-input" id="title"  type="text" placeholder="title">
-					            <input class="uk-input" id="body"  type="text" placeholder="body">
+					             <input class="uk-input" id="title"  type="text" placeholder="update title here">
+					            <input class="uk-input" id="body"  type="text" placeholder="update content here">
 					            <br>
 					          
 
 					        </div>
 
-					        <div class="uk-modal-footer uk-text-right">
+					        <div class="uk-modal-footer uk-text-center">
 					            <button class="uk-button uk-button-secondary updateNote" data-id = "{{_id}}" type="button">Update Note</button>
-					             <button class="uk-button uk-button-secondary deleteNote" data-id = "{{_id}}" type="button">Delete Note</button>
-
-
-					             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-
+					             <button class="uk-button uk-button-secondary deleteNote" recipeId = "{{_id}}" noteId = "{{note}}" type="button">Delete Note</button>
+					     
 					        </div>
 					    </div>
 					</div>
@@ -52,6 +85,8 @@
 	        </div>
     	</div>
   {{/each}}
+</div>
+</div>
 </div>
 
 

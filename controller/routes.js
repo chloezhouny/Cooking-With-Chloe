@@ -40,7 +40,7 @@ app.get("/scrape", function(req, res) {
 
       result.link = "https://www.gordonramsay.com" + $(this).children().children("a").attr("href");
 
-      result.title = $(this).children().children(".summary").children().children("h2").text();
+      result.title = $(this).children().children(".summary").children().children("h2").text().toUpperCase();
       result.content = $(this).children().children(".summary").children().children("p").text();
       result.saved = false;
       console.log(result);

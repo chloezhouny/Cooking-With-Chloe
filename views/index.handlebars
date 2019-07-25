@@ -1,14 +1,67 @@
 
-<div>
-<h1>Recipes</h1> 
-<!-- <button id="scrape" class="btn">Get Recipes</button> -->
-<a class="uk-button uk-button-default" href="/scrape" uk-toggle id="scrape">Get Recipes</a>
-<a class="uk-button uk-button-default" href="/saved" uk-toggle>Show Saved Recipes</a>
-<!-- <button id="saved" href= "/saved" class="btn">Show Saved Recipes</button> -->
+
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" >
+
+
+	<nav class="uk-navbar-container uk-margin" uk-navbar id = "navbar">
+	    <div class="uk-navbar-left">
+
+	        <a class="uk-navbar-item uk-logo" href="/"><h2>COOKING WITH CHLOE</h2></a>
+
+	    </div>
+
+	    <div class = "uk-navbar-right">
+	        <!-- <div class="uk-navbar-item">
+	            <div>Some <a href="#">Link</a></div>
+	        </div>
+
+	        <div class="uk-navbar-item">
+	            <form action="javascript:void(0)">
+	                <input class="uk-input uk-form-width-small" type="text" placeholder="Input">
+	                <button class="uk-button uk-button-default">Button</button>
+	            </form>
+	        </div> -->
+
+	        <ul class="uk-navbar-nav">
+	            <li class="uk-active">
+	            	<a class="uk-button uk-button-default recipes" href="/scrape" uk-toggle id="scrape">RECIPES <img class = "arrow" src = "assets/css/arrow.png"/></a>
+	           <!--      <a href="/scrape" id="scrape" class = "recipes uk-button uk-button-defualt">Recipes <img class = "arrow" src = "assets/css/arrow.png"/></a> -->
+	                <div class="uk-navbar-dropdown" duration="0.1">
+	                    <ul class="uk-nav uk-navbar-dropdown-nav">
+	                        <li class="uk-active"><a href="#">ULTIMITATE FIT FOOD </a></li>
+	                    </ul>
+	                </div>
+	            </li>
+	            <li class="uk-active">
+	                <a href="/saved" class = "recipes">MY FAVORITES<img class = "arrow" src = "assets/css/arrow.png"/></a>
+	                <div class="uk-navbar-dropdown" duration="0.1">
+	                    <ul class="uk-nav uk-navbar-dropdown-nav">
+	                        <li class="uk-active"><a href="#">ULTIMITATE FIT FOOD </a></li>
+	                    </ul>
+	                </div>
+	            </li>
+        	</ul>
+	    </div>
+	</nav>
 </div>
 
 
-<div class="uk-child-width-1-4@m" uk-grid id = "cardContainer">
+
+
+
+<!-- <div> -->
+<div class = "uk-conatiner">
+	<h1 class = "uk-flex uk-flex-center uk-margin-large-top uk-margin-large-bottom">RECIPES</h1> 
+
+<!-- <button id="scrape" class="btn">Get Recipes</button> -->
+<!-- <a class="uk-button uk-button-default" href="/scrape" uk-toggle id="scrape">Get New Recipes</a> -->
+<!-- <a class="uk-button uk-button-default" href="/saved" uk-toggle>My Saved Recipes</a> -->
+
+
+
+
+<div class = "uk-flex uk-flex-center uk-conatiner" id="recipesContainer">
+<div class="uk-child-width-1-3@m uk-conatiner" uk-grid id = "cardContainer">
   {{#each recipes}}
 
 	  {{#unless this.saved}}
@@ -21,12 +74,15 @@
 	            <div class="uk-card-body">
 	                <a href = "{{link}}"><h3 class="uk-card-title">{{title}}</h3></a>
 	                <p>{{content}}</p>
-			    	 <button class="uk-button uk-button-secondary change-save" data-saved="{{saved}}" data-id = "{{_id}}" type="button">Save Recipe</button>
+			    	 <button class="uk-button uk-button-secondary change-save" data-saved="{{saved}}" data-id = "{{_id}}" type="button">Save Me</button>
 	            </div>
 	        </div>
     	</div>
 	  {{/unless}}
   {{/each}}
+</div>
+
+</div>
 </div>
 
 

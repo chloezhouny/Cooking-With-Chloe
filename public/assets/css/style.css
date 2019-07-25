@@ -1,0 +1,80 @@
+
+
+body
+{
+/*	font-family: 'Dosis', sans-serif;*/
+/*font-family: 'Dosis', sans-serif;*/
+font-family: 'Nanum Gothic', sans-serif;
+/*font-family: 'Inconsolata', monospace;*/
+	letter-spacing: 0.1em;
+}
+
+h2
+{
+	font-weight: bold;
+}
+
+
+
+#navbar
+{
+	border-bottom: 1px solid grey;
+}
+
+
+
+.arrow
+{
+	width: 20px;
+	margin-left: 10%;
+	transition: 1s ease-in-out;
+	-webkit-animation: ClockwiseSpin 0.5s  linear forwards;
+	animation: ClockwiseSpin 0.5s linear forwards;
+}
+
+
+
+.recipes:hover > .arrow
+{
+	-webkit-animation: antiClockwiseSpin 0.5s  linear forwards;
+	animation: antiClockwiseSpin 0.5s linear forwards;
+}
+
+
+@keyframes antiClockwiseSpin {
+	0%  {transform: rotate(0deg);}
+	100% {transform: rotate(180deg);}	
+	}
+
+
+@keyframes ClockwiseSpin {
+	100%  {transform: rotate(0deg);}
+	0% {transform: rotate(180deg);}	
+	}
+
+
+#cardContainer
+{
+	border-top: 1px solid grey;
+	padding-top: 3%;
+	margin: 0;
+	width: 90%;
+}
+
+.uk-card-body
+{
+	/*
+	padding-top: 5%;
+	padding-left: 5%;
+	padding-left: 5%;*/
+}
+
+#title, #body
+{
+	border: none;
+}
+
+#title
+{
+	margin-top: 5%;
+}
