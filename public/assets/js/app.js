@@ -1,10 +1,17 @@
   
 
-  $(document).on("click", "#scrape", function(){
+  $(document).on("click", ".scrape", function(){
         $.get("/scrape", function(response){
             window.location.reload();
         }); 
     });
+
+
+  // $(document).on("click", "#scrapefit", function(){
+  //       $.get("/scrapefit", function(response){
+  //           window.location.reload();
+  //       }); 
+  //   });
 
 
 

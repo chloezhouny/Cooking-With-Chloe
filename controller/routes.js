@@ -64,6 +64,45 @@ app.get("/scrape", function(req, res) {
 
 
 
+app.get("/scrapefit", function(req, res) {
+  axios.get("https://www.gordonramsay.com/gr/recipes/category/fit-food").then(function(response) {
+
+    var $ = cheerio.load(response.data);
+
+ $(".recipe").each(function(i, element) {
+      var result = {};
+      console.log($(this));
+      var tempUrl = $(this).children().children("a").children().attr("style");
+      var index = tempUrl.length;
+      result.image = "https://www.gordonramsay.com" + tempUrl.slice(21, index - 2);
+      console.log(result.image);
+
+      result.link = "https://www.gordonramsay.com" + $(this).children().children("a").attr("href");
+
+      result.title = $(this).children().children(".summary").children().children("h2").text().toUpperCase();
+      result.content = $(this).children().children(".summary").children().children("p").text();
+      result.saved = false;
+      console.log(result);
+
+      db.Recipe.create(result)
+        .then(function(dbRecipe) {
+          // View the added result in the console
+          console.log(dbRecipe);
+        })
+        .catch(function(err) {
+          // If an error occurred, log it
+          console.log(err);
+        });
+  
+  
+  });
+   res.send("Scrape Complete");
+});
+
+});
+
+
+
 
 app.get("/recipes", function(req, res) {
   // Grab every document in the Recipes collection

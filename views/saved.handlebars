@@ -13,11 +13,12 @@
 
 	        <ul class="uk-navbar-nav">
 	            <li class="uk-active">
-	            	<a class="uk-button uk-button-default recipes" href="/" uk-toggle id="scrape">RECIPES <img class = "arrow" src = "assets/css/arrow.png"/></a>
+	            	<a class="uk-button uk-button-default recipes scrape" href="/" uk-toggle>RECIPES <img class = "arrow" src = "assets/css/arrow.png"/></a>
 	           <!--      <a href="/scrape" id="scrape" class = "recipes uk-button uk-button-defualt">Recipes <img class = "arrow" src = "assets/css/arrow.png"/></a> -->
 	                <div class="uk-navbar-dropdown" duration="0.1">
 	                    <ul class="uk-nav uk-navbar-dropdown-nav">
-	                        <li class="uk-active"><a href="#">ULTIMITATE FIT FOOD </a></li>
+	                    	 <li class="uk-active scrape"><a href="/">ALL RECIPES</a></li>
+	                        <li ><a href="#">ULTIMITATE FIT FOOD </a></li>
 	                    </ul>
 	                </div>
 	            </li>
@@ -25,7 +26,8 @@
 	                <a href="/saved" class = "recipes">MY FAVORITES<img class = "arrow" src = "assets/css/arrow.png"/></a>
 	                <div class="uk-navbar-dropdown" duration="0.1">
 	                    <ul class="uk-nav uk-navbar-dropdown-nav">
-	                        <li class="uk-active"><a href="#">ULTIMITATE FIT FOOD </a></li>
+	                    	<li class="uk-active"><a href="/saved">ALL FAVORITES</a></li>
+	                        <li><a href="#">ULTIMITATE FIT FOOD </a></li>
 	                    </ul>
 	                </div>
 	            </li>
@@ -66,8 +68,8 @@
 					        </div>
 					        <div class="uk-modal-body">
 					            <p>{{note.body}}</p>
-					             <input class="uk-input" id="title"  type="text" placeholder="update title here">
-					            <input class="uk-input" id="body"  type="text" placeholder="update content here">
+					             <input class="uk-input" id="title"  type="text" placeholder="title">
+					            <input class="uk-input" id="body"  type="text" placeholder="content">
 					            <br>
 					          
 
