@@ -22,22 +22,26 @@ h2
 }
 
 
-
 .arrow
 {
 	width: 20px;
 	margin-left: 10%;
+}
+
+.recipes > .arrow
+{
+	
 	transition: 1s ease-in-out;
-	-webkit-animation: ClockwiseSpin 0.5s  linear forwards;
-	animation: ClockwiseSpin 0.5s linear forwards;
+	-webkit-animation: ClockwiseSpin 0.5s;
+	animation: ClockwiseSpin 0.5s;
 }
 
 
 
 .recipes:hover > .arrow
 {
-	-webkit-animation: antiClockwiseSpin 0.5s  linear forwards;
-	animation: antiClockwiseSpin 0.5s linear forwards;
+	-webkit-animation: antiClockwiseSpin 0.5s forwards;
+	animation: antiClockwiseSpin 0.5s forwards;
 }
 
 
