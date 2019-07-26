@@ -107,6 +107,8 @@
                 body: ""
             }
 
+           window.location.reload();
+
            // $.post("/recipes/"+recipeID, note, function(response){
            //     console.log(response);
            //      $("#title").val("");

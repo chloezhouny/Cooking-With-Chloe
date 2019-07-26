@@ -4,31 +4,49 @@ body
 {
 /*	font-family: 'Dosis', sans-serif;*/
 /*font-family: 'Dosis', sans-serif;*/
-font-family: 'Nanum Gothic', sans-serif;
+/*font-family: 'Cormorant Garamond', serif;*/
+/*font-family: 'Crimson Text', serif;*/
 /*font-family: 'Inconsolata', monospace;*/
-	letter-spacing: 0.1em;
+font-family: 'News Cycle', sans-serif;
+	letter-spacing: 0.05em;
 }
 
 h2
 {
 	font-weight: bold;
+	font-size: 28px;
+	font-family: 'Francois One', sans-serif;
+	margin-top: 8%;
 }
 
+h1, h3, a
+{
+	font-family: 'News Cycle', sans-serif;
+}
 
 
 #navbar
 {
 	border-bottom: 1px solid grey;
+	margin-bottom: 0;
 }
+
+
+.uk-navbar-dropdown
+{
+
+	z-index: 100;
+}
+
 
 
 .arrow
 {
 	width: 20px;
-	margin-left: 10%;
+	margin-left: 20%;
 }
 
-.recipes > .arrow
+.recipesMenu >.recipes > .arrow
 {
 	
 	transition: 1s ease-in-out;
@@ -38,11 +56,19 @@ h2
 
 
 
-.recipes:hover > .arrow
+.recipesMenu:hover >.recipes > .arrow
 {
 	-webkit-animation: antiClockwiseSpin 0.5s forwards;
 	animation: antiClockwiseSpin 0.5s forwards;
 }
+
+
+
+/*.sticky
+{
+	z-index: -100;
+	pointer-events:none;
+}*/
 
 
 @keyframes antiClockwiseSpin {
@@ -63,6 +89,7 @@ h2
 	padding-top: 3%;
 	margin: 0;
 	width: 90%;
+
 }
 
 .uk-card-body
@@ -71,6 +98,7 @@ h2
 	padding-top: 5%;
 	padding-left: 5%;
 	padding-left: 5%;*/
+	font-size: 18px;
 }
 
 #title, #body
